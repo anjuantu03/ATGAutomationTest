@@ -1,6 +1,10 @@
 package pages;
 
-import java.io.IOException;
+/**
+ * This class contains the WebElements and the required
+ * functions in home page
+ * 
+ */
 
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ATGHomePage {
 
@@ -40,6 +46,7 @@ public class ATGHomePage {
 	}
 
 
+	//This function is to select Häst in home page.
 	public void selectHorse() throws InterruptedException
 	{
 		try {
@@ -56,6 +63,8 @@ public class ATGHomePage {
 	}
 
 
+	
+	//This function is to select V4 from homepage, incase V4 option is not available, it will select V4 from game calendar.
 	public void selectV4() throws InterruptedException
 	{
 		try
@@ -70,12 +79,14 @@ public class ATGHomePage {
 		}
 		
 		catch(Exception e) {
-			System.out.println("V4 option is not available in Home page");
+			System.out.println("V4 option is not available in Home page.Proceeding with Calendar option.");
+			
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", btn_gameCalendar);
-			Thread.sleep(8000);
+			WebDriverWait wait = new WebDriverWait(driver,30);
+			wait.until(ExpectedConditions.visibilityOf(btn_nextDay));
 			executor.executeScript("arguments[0].click();", btn_nextDay);
-			Thread.sleep(3000);
+			wait.until(ExpectedConditions.visibilityOf(btn_gameTypeV4));
 			executor.executeScript("arguments[0].click();", btn_gameTypeV4);
 			Thread.sleep(8000);
 		}

@@ -1,5 +1,11 @@
 package pages;
 
+/**
+ * This class contains the WebElements and the required
+ * functions in V4 page
+ * 
+ */
+
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -7,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ATGCouponPage {
 	
@@ -60,10 +68,12 @@ public class ATGCouponPage {
 	}
 	
 	
-	
+	//This function is to make coupon
 	public void clickNewCoupon()
 	{
 		try {
+			WebDriverWait wait = new WebDriverWait(driver,30);
+			wait.until(ExpectedConditions.visibilityOf(btn_newCoupon));
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", btn_newCoupon);
 		}	
@@ -75,7 +85,7 @@ public class ATGCouponPage {
 
 	}
 	
-	
+	//This function is to click new coupon from the pop up
 	public void clickNewCouponPopup()
 	{
 		try {
@@ -84,12 +94,14 @@ public class ATGCouponPage {
 		}	
 
 		catch (NoSuchElementException e) {
-			System.out.println("New Coupon option is not available");
-			Assert.fail("New Coupon is not available");
+			System.out.println("New Coupon Pop up option is not available");
+			Assert.fail("New Coupon pop up option is not available");
 		}
 
 	}
 	
+	
+	//This function is to select 4 horses from V4-1
 	public void selectV4_1_horses()
 	{
 		try {
@@ -107,6 +119,7 @@ public class ATGCouponPage {
 
 	}
 	
+	//This function is to select 1 horse from V4-2
 	public void selectV4_2_horses()
 	{
 		try {
@@ -121,6 +134,8 @@ public class ATGCouponPage {
 
 	}
 	
+	
+	//This function is to select 2 horses from V4-3
 	public void selectV4_3_horses()
 	{
 		try {
@@ -136,6 +151,7 @@ public class ATGCouponPage {
 
 	}
 	
+	//This function is to select all horse from V4-4
 	public void selectV4_4_horses()
 	{
 		try {

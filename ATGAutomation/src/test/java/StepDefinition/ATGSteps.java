@@ -1,23 +1,22 @@
 package StepDefinition;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+/**
+ * This class contains the step definitions 
+ * 
+ * 
+ */
 
-import org.junit.AfterClass;
+import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.ATGCouponPage;
 import pages.ATGHomePage;
 
@@ -29,11 +28,8 @@ public class ATGSteps {
 
 	@Before
 	public void browserSetup() throws IOException {
-
-
-		String projectPath =System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver",
-				projectPath+"/src/test/resources/drivers/chromedriver.exe"); 
+		
+		WebDriverManager.chromedriver().setup();
 		driver= new ChromeDriver(); 
 		driver.manage().window().maximize();
 
