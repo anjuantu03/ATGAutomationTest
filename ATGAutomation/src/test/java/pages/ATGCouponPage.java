@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -69,6 +70,7 @@ public class ATGCouponPage {
 
 		catch (NoSuchElementException e) {
 			System.out.println("New Coupon is not available");
+			Assert.fail("New Coupon is not available");
 		}
 
 	}
@@ -83,6 +85,7 @@ public class ATGCouponPage {
 
 		catch (NoSuchElementException e) {
 			System.out.println("New Coupon option is not available");
+			Assert.fail("New Coupon is not available");
 		}
 
 	}
@@ -99,6 +102,7 @@ public class ATGCouponPage {
 
 		catch (NoSuchElementException e) {
 			System.out.println("Horses are not available- V4-1");
+			Assert.fail("Horses are not available- V4-1");
 		}
 
 	}
@@ -112,6 +116,7 @@ public class ATGCouponPage {
 
 		catch (NoSuchElementException e) {
 			System.out.println("Horses are not available- V4-2");
+			Assert.fail("Horses are not available- V4-2");
 		}
 
 	}
@@ -126,6 +131,7 @@ public class ATGCouponPage {
 
 		catch (NoSuchElementException e) {
 			System.out.println("Horses are not available- V4-3");
+			Assert.fail("Horses are not available- V4-3");
 		}
 
 	}
@@ -139,6 +145,7 @@ public class ATGCouponPage {
 
 		catch (NoSuchElementException e) {
 			System.out.println("Horses are not available- V4-4");
+			Assert.fail("Horses are not available- V4-4");
 		}
 
 	}

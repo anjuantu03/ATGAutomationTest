@@ -1,11 +1,16 @@
 package StepDefinition;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.junit.AfterClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -23,14 +28,18 @@ public class ATGSteps {
 	ATGCouponPage couponpage;
 
 	@Before
-	public void browserSetup()
-	{
+	public void browserSetup() throws IOException {
+
+
 		String projectPath =System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", projectPath+"/src/test/resources/drivers/chromedriver.exe");
-		driver= new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver",
+				projectPath+"/src/test/resources/drivers/chromedriver.exe"); 
+		driver= new ChromeDriver(); 
 		driver.manage().window().maximize();
 
 	}
+
+
 
 	@Given("the user in ATG home page")
 	public void the_user_in_atg_home_page() {
@@ -41,7 +50,7 @@ public class ATGSteps {
 	}
 
 	@When("the user select Horse")
-	public void the_user_select_horse() {
+	public void the_user_select_horse() throws InterruptedException {
 		homepage= new ATGHomePage(driver);
 		homepage.selectHorse();
 
@@ -63,14 +72,14 @@ public class ATGSteps {
 
 	@And("^Mark four horses on v4:One$")
 	public void mark_four_horses_on_v_One() throws Throwable {
-	   couponpage.selectV4_1_horses();
-	  
+		couponpage.selectV4_1_horses();
+
 	}
 
 	@And("^Mark one horse on v4:Two$")
 	public void mark_one_horse_on_v_Two() throws Throwable {
-		 couponpage.selectV4_2_horses();
-	    
+		couponpage.selectV4_2_horses();
+
 	}
 
 	@And("^Mark two horses on v4:Three$")
@@ -82,8 +91,8 @@ public class ATGSteps {
 	public void mark_all_horses_on_v_Four() throws Throwable {
 		couponpage.selectV4_4_horses();
 	}
-	    
-	    
+
+
 	@Then("test is finished")
 	public void test_is_finished() {
 		System.out.println("Test completed successfully!!");
@@ -94,13 +103,13 @@ public class ATGSteps {
 	@After
 	public void tearDown()
 	{
-		
-		  driver.close(); 
-		  driver.quit();
-		 
+
+		driver.close(); 
+		driver.quit();
+
 
 	}
-	
-	 
+
+
 
 }

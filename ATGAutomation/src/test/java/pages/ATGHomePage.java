@@ -2,6 +2,7 @@ package pages;
 
 import java.io.IOException;
 
+import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -39,15 +40,17 @@ public class ATGHomePage {
 	}
 
 
-	public void selectHorse()
+	public void selectHorse() throws InterruptedException
 	{
 		try {
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", tab_Horse);
+			
 		}	
 
 		catch (NoSuchElementException e) {
 			System.out.println("Häst tab is not available");
+			Assert.fail("Häst tab is not available");
 		}
 
 	}
@@ -55,13 +58,19 @@ public class ATGHomePage {
 
 	public void selectV4() throws InterruptedException
 	{
+		try
+		{
 		
-		try {
+		if(btn_V4.isDisplayed())
+		{
+		
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", btn_V4);
 		}
+		}
+		
 		catch(Exception e) {
-			System.out.println("V4 option is not available");
+			System.out.println("V4 option is not available in Home page");
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", btn_gameCalendar);
 			Thread.sleep(8000);
